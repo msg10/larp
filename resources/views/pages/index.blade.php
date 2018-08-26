@@ -1,14 +1,15 @@
+<!doctype html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <title>LARP</title>
+</head>
+
+<body>
 @extends('layouts.app')
 
 @section('content')
-<!doctype html>
-<html>
-        <head>
-                <meta charset="utf-8">
-        </head>
-        <title>{{$title}}</title>
-        <body>
-
                 <div class="jumbotron text-center">
                 <h1>{{$title}}</h1>
                 <p>@lang('lang.welcome') {{$title}} !</p>
@@ -19,6 +20,7 @@
                 </p>
                 @endif
                 </div>
+
+@endsection
         </body>
 </html>
-@endsection

@@ -51,24 +51,31 @@
                <br>
                <table class="table table-striped">
                   <tr>
-                     <th>@lang('lang.iname')</th>
-                     <th></th>
-                     <th></th>
+                     <th >@lang('lang.iname')</th>
+                      <th class="text-center">@lang('lang.date')</th>
+                      <th class="text-center">@lang('lang.rating')</th>
+                      <th></th>
+                      <th></th>
+
                   </tr>
                   @foreach($items as $item)
                   <tr>
-                     <td><a href="/items/{{$item->id}}/edit">{{$item->title}}</a></td>
-                     <td>
-                        <a href="/items/{{$item->id}}/edit" class="btn btn-secondary">@lang('lang.edit')</a>
-                     </td>
+                     <td><a href="/items/{{$item->id}}">{{$item->title}}</a></td>
+
+                      <td>
+                          <p class="text-center">{{$item->created_at}}</p>
+                      </td>
+                      <td>
+                          <p class="text-center">{{$item->rating}}</p>
+                      </td>
+                      <td>
+                          <a href="/items/{{$item->id}}/edit" class="btn btn-secondary">@lang('lang.edit')</a>
+                      </td>
                       <td>
                           {!!Form::open(['action' => ['ItemsController@destroy', $item->id] , 'method' => 'POST', 'class'=>'float-right'])!!}
                           {{Form::hidden('_method', 'DELETE')}}
                           {{Form::submit(Lang::get('lang.delete'), ['class'=> 'btn btn-danger'])}}
                           {!!Form::close()!!}
-                      </td>
-                      <td>
-                          {{$item->rating}}
                       </td>
                   </tr>
                   @endforeach

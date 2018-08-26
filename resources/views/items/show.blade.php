@@ -15,8 +15,8 @@
     <img style="width:50% " src="/storage/cover_images/{{$item->cover_image}}">
     </div>
     <br>
-    <div>
-        {!!$item->description!!}
+    <div class="card p-3">
+        <p class="text-justify">{{$item->description}}</p>
     </div>
     <hr>
     <small>@lang('lang.createdon') {{$item->created_at}} @lang('lang.createdby') {{$item -> user -> name}} </small>
@@ -24,16 +24,25 @@
     @if(!Auth::guest())
         @if(Auth::user()->id == $item -> user_id)
             <a href="/items/{{$item->id}}/edit" class= "btn btn-secondary">@lang('lang.edit')</a>
+        @endif
+    @endif
+
+    @if(!Auth::guest())
+        @if(Auth::user()->id == $item -> user_id || Auth::user()->is_admin=='1' )
 
             {!!Form::open(['action' => ['ItemsController@destroy', $item->id] , 'method' => 'POST', 'class'=>'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit(Lang::get('lang.delete'), ['class'=> 'btn btn-danger'])}}
             {!!Form::close()!!}
+
         @endif
     @endif
-    <hr>
+    <br>
+    <br>
+
+
     {{--Rating/reviews--}}
-    <div class="comments">
+    <div class="comments p-3">
         <ul class="list-group">
         @foreach($item->comments as $comment)
         <li class="list-group-item">
@@ -50,13 +59,14 @@
     </div>
     {{--Add a review--}}
     <hr>
-    <div class="card">
+    <div class="card p-3">
         <div class="card-block">
         <form method="POST" action="/items/{{$item->id}}/comments">
             {{csrf_field()}}
-            <p>@lang('lang.rating')</p>
 
-            <div class="form-group">
+            <p class="d-inline-block">@lang('lang.rating')</p>
+
+            <div class="form-group d-inline-block">
                     <select name="rating" >
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -69,7 +79,7 @@
                     <textarea name="body" placeholder="@lang('lang.review')" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">@lang('lang.save')</button>
+                    <button type="submit" class="btn btn-primary float-right">@lang('lang.save')</button>
                 </div>
             </form>
         </div>

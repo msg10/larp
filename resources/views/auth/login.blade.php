@@ -1,3 +1,12 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LARP</title>
+</head>
+
+<body>
 @extends('layouts.app')
 
 @section('content')
@@ -69,3 +78,5 @@
     </div>
 </div>
 @endsection
+</body>
+</html>
