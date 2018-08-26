@@ -34,14 +34,14 @@
                     <h6 class="d-inline-block">@lang('lang.displayitems') : </h6>
 
                    <div class="d-inline-block">
-               {!! Form::open(['action' => ['UserController@update', "by_date"], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+               {!! Form::open(['action' => ['UserController@update', "created_at"], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                {{Form::hidden('_method', 'PUT')}}
                {{Form::submit(Lang::get('lang.bydate'), ['class'=> 'btn'])}}
                {!!Form::close()!!}
                    </div>
 
                    <div class="d-inline-block">
-               {!! Form::open(['action' => ['UserController@update', "by_rating"], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+               {!! Form::open(['action' => ['UserController@update', "rating"], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                {{Form::hidden('_method', 'PUT')}}
                {{Form::submit(Lang::get('lang.byrating'), ['class'=> 'btn'])}}
                {!!Form::close()!!}
@@ -55,18 +55,21 @@
                      <th></th>
                      <th></th>
                   </tr>
-                  @foreach($items->sortBy('rating') as $item)
+                  @foreach($items as $item)
                   <tr>
                      <td><a href="/items/{{$item->id}}/edit">{{$item->title}}</a></td>
                      <td>
                         <a href="/items/{{$item->id}}/edit" class="btn btn-secondary">@lang('lang.edit')</a>
                      </td>
-                     <td>   
-                        {!!Form::open(['action' => ['ItemsController@destroy', $item->id] , 'method' => 'POST', 'class'=>'float-right'])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit(Lang::get('lang.delete'), ['class'=> 'btn btn-danger'])}}
-                        {!!Form::close()!!}
-                     </td>
+                      <td>
+                          {!!Form::open(['action' => ['ItemsController@destroy', $item->id] , 'method' => 'POST', 'class'=>'float-right'])!!}
+                          {{Form::hidden('_method', 'DELETE')}}
+                          {{Form::submit(Lang::get('lang.delete'), ['class'=> 'btn btn-danger'])}}
+                          {!!Form::close()!!}
+                      </td>
+                      <td>
+                          {{$item->rating}}
+                      </td>
                   </tr>
                   @endforeach
                </table>

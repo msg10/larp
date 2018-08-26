@@ -24,8 +24,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user_id = auth() -> user() -> id;
-        $user = User::find($user_id);
-        return view('dashboard') -> with('items' , $user-> items);
+        $user = auth() -> user();
+
+        $items = $user->items;
+        foreach ($items as $item) {
+            $item->rating = $item->comments->avg('rating');
+        }
+
+        $sortedItems = $items->sortByDesc($user->filter);
+        return view('dashboard') -> with('items' , $sortedItems);
     }
 }
