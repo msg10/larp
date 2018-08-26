@@ -1,16 +1,26 @@
 
-// Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
 @import 'variables';
 
-// Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
+@import "custom";
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-//Custom CSS
-@import "custom";
+
+
+.rd{
+  background-color: #4CAF50;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+
+}
+
+.rd:hover {
+  background-color: #4CAF50; 
+  color: white;
+}

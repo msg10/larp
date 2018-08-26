@@ -1,6 +1,19 @@
-@extends('layouts.app')
+<!doctype html>
+<html>
 
-@section('content')
-    <h1>ABOUT</h1>
-    <p>This is the about page</p>
-@endsection
+<head>
+    <meta charset="utf-8">
+    <title>LARP</title>
+</head>
+
+<body>
+    @extends('layouts.app') @section('content')
+
+    <h1>@lang('lang.about')</h1>
+    <div class="card">
+        <p>@lang('lang.abouttext')</p>
+    </div>
+    @endsection
+</body>
+
+</html>

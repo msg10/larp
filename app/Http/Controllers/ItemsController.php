@@ -84,7 +84,8 @@ class ItemsController extends Controller
         $item -> cover_image = $fileNameToStore;
         $item -> save();
 
-        return redirect('/items')->with('success', 'Item Submitted');
+        return redirect('/items');
+        //->with('success', 'Item Submitted');
 
     }
 
@@ -155,8 +156,8 @@ class ItemsController extends Controller
             $item -> cover_image = $fileNameToStore;
         }
         $item -> save();
-
-        return redirect('/items')->with('success', 'Item Updated');
+        return redirect('/items');
+        //return redirect('/items')->with('success', @lang('lang.iupdated'));
     }
 
     /**
@@ -178,7 +179,8 @@ class ItemsController extends Controller
         }
         
         $item -> delete();
-        return redirect('/items')->with('success', 'Item Deleted');
+        return redirect('/items');
+        //->with('success', 'Item Deleted');
 
     }
 }

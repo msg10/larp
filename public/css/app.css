@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -2794,6 +2795,19 @@ textarea.form-control {
     -webkit-transition: none;
     transition: none;
   }
+}
+.btn-rd{
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+
+}
+
+.btn-rd:hover {
+  background-color: rgb(100, 100, 100); 
+  color: white;
 }
 
 .btn:hover,
