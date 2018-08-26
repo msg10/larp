@@ -10,7 +10,7 @@ class Comment extends Model
 {
     protected $fillable = ['body'];
     public function item(){
-        return $this->belongsTo('Item');
+        return $this->belongsTo('App\Item');
         //return $this->belongsTo(Item::class);
     }
 

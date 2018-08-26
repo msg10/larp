@@ -32,7 +32,10 @@ class ItemsController extends Controller
         //$items = DB::select('SELECT * FROM items');
         //$items = Item::orderBy('title', 'asc')->get();
 
-        $items = Item::orderBy('created_at', 'desc')->paginate(10);
+        $items = Item::orderBy('created_at', 'desc')->with('comments')->paginate(10);
+        foreach ($items as $item) {
+            $item->rating = $item->comments->avg('rating');
+        }
         return view('items.index')->with('items',$items);
     }
 

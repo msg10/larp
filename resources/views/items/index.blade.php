@@ -21,6 +21,7 @@
             <div class="col-md-8 col-sm-8">
                 <h3><a href="/items/{{$item->id}}">{{$item->title}}</a></h3>
                 <small >@lang('lang.createdon') {{$item->created_at}} @lang('lang.createdby') {{$item -> user -> name}} </small>
+                <div>Rating: {{$item->rating}}</div>
             </div>
 
         </div>
